@@ -1,7 +1,29 @@
-import { greet } from "./utils/greet";
+import { babyNames } from "./babyName";
+import AddNameButton from "./components/AddNameButton";
+import "./styles.css";
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+  return (
+    <>
+      <h1> Welcome to baby name picker!</h1>
+      <hr />
+      <div className="button-container">
+        {babyNames.map((b) => (
+          <AddNameButton baby={b} key={b.id} />
+        ))}
+      </div>
+    </>
+  );
 }
 
 export default App;
+
+export type BabyData = {
+  id: number;
+  name: string;
+  sex: string;
+};
+
+export type Baby = {
+  baby: BabyData;
+};

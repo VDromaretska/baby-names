@@ -1,0 +1,24 @@
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.my-button {
+  margin: 10;
+}
+
+.girl-button {
+  background-color: yellow;
+  color: rgb(102, 24, 147);
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+}
+
+.boy-button {
+  background-color: rgb(102, 24, 147);
+  color: yellow;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+}

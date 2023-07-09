@@ -1,6 +1,12 @@
 .button-container {
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 30px;
+  padding: 1rem;
+  margin: 0.5rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .my-button {

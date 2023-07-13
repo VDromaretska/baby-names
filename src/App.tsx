@@ -1,16 +1,21 @@
 import { babyNames } from "./babyName";
 import AddNameButton from "./components/AddNameButton";
 import "./styles.css";
-import SearchBar from "./components/SearchBar";
+import { useState } from "react"
+
 
 function App(): JSX.Element {
+  const [text, setText] = useState("");
+
   return (
     <>
       <h1> Welcome to baby name picker!</h1>
       <hr />
       <div>
-        <SearchBar />
+      <input value={text} onChange={(e)=>setText(e.target.value)}
+      type="text" placeholder="Search for names.." />
       </div>
+      {(text==="") &&
       <div className="button-container">
         {babyNames
           .sort((a, b) =>
@@ -19,7 +24,13 @@ function App(): JSX.Element {
           .map((b) => (
             <AddNameButton baby={b} key={b.id} />
           ))}
-      </div>
+      </div >}
+      {(text.length>0)&&
+        <div className="button-container">
+        {babyNames
+        .filter(n => n.name.toLowerCase().includes(text.toLowerCase())).map((b)=> (<AddNameButton baby={b} key = {b.id} />))}
+        </div>
+        }
     </>
   );
 }

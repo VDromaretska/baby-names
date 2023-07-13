@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Baby } from "../App";
 
 function AddNameButton(props: Baby): JSX.Element {

@@ -5,14 +5,13 @@ import { useState } from "react";
 
 function App(): JSX.Element {
   const [text, setText] = useState("");
+  const [fav, setFav] = useState<BabyData[]>([]);
   function buttonClass(b:BabyData): string{
     return b.sex === "f" ? "girl-button" : "boy-button";}
-  const [clicked, setClicked] = useState(false);
-  let favouritesNames : BabyData[]=[];
   
+ 
   const handleClick = (b:BabyData) => {
-  setClicked(true);
-favouritesNames.push(b);
+  setFav(prev => [...prev,b])
 }
 
   return (
@@ -28,18 +27,26 @@ favouritesNames.push(b);
         />
       </div>
       <div className="button-container">
-        <hr />
-        {clicked ===true && 
-            favouritesNames?.map((b)=> (
+        { fav.length===0 &&
+        <h2>Add name to favourites by clicking on it</h2>
+        }
+        
+        {fav && 
+        <div>
+          <h2>Favorites</h2>{fav.map((b)=> (
               <button className={buttonClass(b)} key={b.id}>{b.name}</button>
             ))}
+
+        </div>}
+            
       </div>
       <div className="button-container">
-        {clicked ===false && 
+        {
         babyNames.sort((a, b) =>
             a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
           )
           .filter((n) => n.name.toLowerCase().includes(text.toLowerCase()))
+          .filter((n) => !fav.includes(n))
           .map((b) => (
             <button className={buttonClass(b)} onClick={()=>handleClick(b)} key={b.id}>{b.name}</button>
           ))}

@@ -32,8 +32,8 @@ const handleFilterNeutral =() => setGender("n");
           type="text"
           placeholder="Search for names.."
         />
-        <button onClick={handleFilterBoy}>Boy 👨</button>
-        <button onClick={handleFilterGirl}>Girl 👧</button>
+        <button className = {"boy-button"} onClick={handleFilterBoy}>Boy 👨</button>
+        <button className = {"girl-button"}onClick={handleFilterGirl}>Girl 👧</button>
         <button onClick={handleFilterNeutral}>👨 Both 👧</button>
       </div>
       <div className="button-container">
